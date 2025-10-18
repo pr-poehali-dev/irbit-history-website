@@ -17,6 +17,16 @@ const Index = () => {
       url: 'https://cdn.poehali.dev/files/faa862de-6368-49e6-a8a8-e1fd6913f6c2.jpeg',
       title: 'Ирбитская ярмарка',
       description: 'Историческая фотография знаменитой ярмарки'
+    },
+    {
+      url: 'https://cdn.poehali.dev/files/13408e82-b71d-4487-8ac4-5dfc5532b6eb.jpeg',
+      title: 'Дворец культуры',
+      description: 'ДК им. В.К. Костевича в вечерней подсветке'
+    },
+    {
+      url: 'https://cdn.poehali.dev/files/a0d545fd-a6c3-480e-b71f-8ca3386c54ae.jpg',
+      title: 'Кинотеатр',
+      description: 'Здание кинотеатра с характерной советской архитектурой'
     }
   ];
 
