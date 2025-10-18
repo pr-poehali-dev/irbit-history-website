@@ -5,7 +5,6 @@ import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
-  const [comparisonSlider, setComparisonSlider] = useState(50);
 
   const timelineEvents = [
     {
@@ -46,20 +45,7 @@ const Index = () => {
     }
   ];
 
-  const reconstructedPlaces = [
-    {
-      name: 'Главная площадь',
-      oldImage: 'https://cdn.poehali.dev/projects/53302110-19c1-42a7-af1d-801fb88b54db/files/dc6c95ea-00d3-4381-b70e-5e11b355a79f.jpg',
-      newImage: 'https://cdn.poehali.dev/projects/53302110-19c1-42a7-af1d-801fb88b54db/files/3cd9badc-1950-4f5a-bd30-fd9b596a888a.jpg',
-      description: 'Центральная площадь города прошла полную реконструкцию'
-    },
-    {
-      name: 'Исторический музей',
-      oldImage: 'https://cdn.poehali.dev/projects/53302110-19c1-42a7-af1d-801fb88b54db/files/453f6235-4e97-4119-8de7-be81a1052685.jpg',
-      newImage: 'https://cdn.poehali.dev/projects/53302110-19c1-42a7-af1d-801fb88b54db/files/3cd9badc-1950-4f5a-bd30-fd9b596a888a.jpg',
-      description: 'Восстановление исторического облика здания музея'
-    }
-  ];
+
 
   return (
     <div className="min-h-screen bg-background">
@@ -109,64 +95,7 @@ const Index = () => {
             </div>
           </section>
 
-          <section className="py-20 bg-white">
-            <div className="container mx-auto px-4">
-              <h3 className="text-4xl font-bold text-center mb-16 text-secondary">
-                Реконструкция мест
-              </h3>
-              <div className="grid md:grid-cols-2 gap-12">
-                {reconstructedPlaces.map((place, index) => (
-                  <Card key={index} className="p-6 animate-fade-in">
-                    <h4 className="text-2xl font-semibold mb-4">{place.name}</h4>
-                    <div className="relative h-80 mb-4 rounded-lg overflow-hidden group">
-                      <div className="absolute inset-0">
-                        <img
-                          src={place.oldImage}
-                          alt={`${place.name} старое`}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div
-                        className="absolute inset-0 transition-all duration-300"
-                        style={{
-                          clipPath: `polygon(0 0, ${comparisonSlider}% 0, ${comparisonSlider}% 100%, 0 100%)`
-                        }}
-                      >
-                        <img
-                          src={place.newImage}
-                          alt={`${place.name} новое`}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div
-                        className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-10"
-                        style={{ left: `${comparisonSlider}%` }}
-                      >
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-lg">
-                          <Icon name="MoveHorizontal" size={20} className="text-secondary" />
-                        </div>
-                      </div>
-                      <input
-                        type="range"
-                        min="0"
-                        max="100"
-                        value={comparisonSlider}
-                        onChange={(e) => setComparisonSlider(Number(e.target.value))}
-                        className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize"
-                      />
-                      <div className="absolute top-4 left-4 bg-secondary/80 text-white px-3 py-1 rounded">
-                        Было
-                      </div>
-                      <div className="absolute top-4 right-4 bg-primary/80 text-white px-3 py-1 rounded">
-                        Стало
-                      </div>
-                    </div>
-                    <p className="text-muted-foreground">{place.description}</p>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </section>
+
 
           <section className="py-20 bg-muted">
             <div className="container mx-auto px-4 text-center">
