@@ -5,6 +5,7 @@ import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [selectedComparison, setSelectedComparison] = useState<number | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const galleryImages = [
@@ -69,6 +70,23 @@ const Index = () => {
     }
   ];
 
+  const reconstructionProjects = [
+    {
+      title: 'Дворец культуры им. В.К. Костевича',
+      before: 'https://cdn.poehali.dev/files/a0d545fd-a6c3-480e-b71f-8ca3386c54ae.jpg',
+      after: 'https://cdn.poehali.dev/files/13408e82-b71d-4487-8ac4-5dfc5532b6eb.jpeg',
+      year: '2015-2018',
+      description: 'Комплексная реконструкция фасада, современная подсветка и благоустройство прилегающей территории'
+    },
+    {
+      title: 'Центральная площадь',
+      before: 'https://cdn.poehali.dev/files/faa862de-6368-49e6-a8a8-e1fd6913f6c2.jpeg',
+      after: 'https://cdn.poehali.dev/files/6d6aff45-de8a-422b-9880-daebf5865a09.jpeg',
+      year: '2019-2021',
+      description: 'Обновление брусчатки, установка современных фонарей, создание зон отдыха и проведение праздников'
+    }
+  ];
+
 
 
   return (
@@ -90,6 +108,13 @@ const Index = () => {
               className="text-base"
             >
               История
+            </Button>
+            <Button
+              variant={activeSection === 'reconstruction' ? 'default' : 'ghost'}
+              onClick={() => setActiveSection('reconstruction')}
+              className="text-base"
+            >
+              Реконструкция
             </Button>
           </div>
         </div>
@@ -293,6 +318,179 @@ const Index = () => {
               </div>
             </div>
           </section>
+        </div>
+      )}
+
+      {activeSection === 'reconstruction' && (
+        <div className="pt-20">
+          <section className="py-20 bg-gradient-to-b from-secondary/10 to-white">
+            <div className="container mx-auto px-4">
+              <h2 className="text-5xl font-bold text-center mb-8 text-secondary animate-fade-in">
+                Реконструкция города
+              </h2>
+              <p className="text-xl text-center text-muted-foreground max-w-3xl mx-auto mb-16 animate-fade-in">
+                Современное развитие с сохранением исторического облика
+              </p>
+
+              <div className="max-w-6xl mx-auto space-y-16">
+                {reconstructionProjects.map((project, index) => (
+                  <Card key={index} className="overflow-hidden animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                    <div className="p-8">
+                      <div className="flex items-center justify-between mb-6">
+                        <h3 className="text-3xl font-bold text-secondary">{project.title}</h3>
+                        <span className="text-lg font-semibold text-primary bg-primary/10 px-4 py-2 rounded-full">
+                          {project.year}
+                        </span>
+                      </div>
+                      <p className="text-lg text-muted-foreground mb-8">{project.description}</p>
+                      
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-3">
+                          <div className="flex items-center gap-2 text-muted-foreground font-semibold">
+                            <Icon name="Clock" size={20} />
+                            <span>До реконструкции</span>
+                          </div>
+                          <div 
+                            className="relative aspect-video rounded-lg overflow-hidden cursor-pointer group"
+                            onClick={() => setSelectedComparison(index)}
+                          >
+                            <img
+                              src={project.before}
+                              alt={`${project.title} - до`}
+                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                              <Icon name="Expand" size={32} className="text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="space-y-3">
+                          <div className="flex items-center gap-2 text-primary font-semibold">
+                            <Icon name="Sparkles" size={20} />
+                            <span>После реконструкции</span>
+                          </div>
+                          <div 
+                            className="relative aspect-video rounded-lg overflow-hidden cursor-pointer group"
+                            onClick={() => setSelectedComparison(index)}
+                          >
+                            <img
+                              src={project.after}
+                              alt={`${project.title} - после`}
+                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                              <Icon name="Expand" size={32} className="text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="py-20 bg-muted">
+            <div className="container mx-auto px-4">
+              <h3 className="text-4xl font-bold text-center mb-12 text-secondary">
+                Ключевые направления
+              </h3>
+              <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <Card className="p-8 text-center animate-fade-in">
+                  <Icon name="Building" size={56} className="mx-auto mb-6 text-primary" />
+                  <h4 className="text-xl font-semibold mb-3">Архитектура</h4>
+                  <p className="text-muted-foreground">
+                    Восстановление исторических фасадов с применением современных технологий
+                  </p>
+                </Card>
+                <Card className="p-8 text-center animate-fade-in" style={{ animationDelay: '0.1s' }}>
+                  <Icon name="Lightbulb" size={56} className="mx-auto mb-6 text-primary" />
+                  <h4 className="text-xl font-semibold mb-3">Освещение</h4>
+                  <p className="text-muted-foreground">
+                    Современная подсветка зданий и благоустройство улиц
+                  </p>
+                </Card>
+                <Card className="p-8 text-center animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                  <Icon name="Trees" size={56} className="mx-auto mb-6 text-primary" />
+                  <h4 className="text-xl font-semibold mb-3">Благоустройство</h4>
+                  <p className="text-muted-foreground">
+                    Создание комфортной городской среды и зон отдыха
+                  </p>
+                </Card>
+              </div>
+            </div>
+          </section>
+
+          <section className="py-20 bg-white">
+            <div className="container mx-auto px-4">
+              <h3 className="text-4xl font-bold text-center mb-12 text-secondary">
+                Планы развития
+              </h3>
+              <div className="max-w-4xl mx-auto space-y-6">
+                {[
+                  { icon: 'MapPin', title: 'Пешеходные зоны', desc: 'Создание новых прогулочных маршрутов в историческом центре' },
+                  { icon: 'Wifi', title: 'Цифровизация', desc: 'Внедрение умных технологий и бесплатный Wi-Fi в общественных местах' },
+                  { icon: 'Music', title: 'Культурные пространства', desc: 'Открытие новых музеев и культурных центров' },
+                  { icon: 'Bus', title: 'Транспорт', desc: 'Модернизация общественного транспорта и дорожной инфраструктуры' }
+                ].map((item, index) => (
+                  <Card key={index} className="p-6 flex items-start gap-6 hover:shadow-lg transition-shadow animate-fade-in" style={{ animationDelay: `${index * 0.05}s` }}>
+                    <div className="bg-primary/10 p-4 rounded-lg">
+                      <Icon name={item.icon} size={32} className="text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-semibold mb-2">{item.title}</h4>
+                      <p className="text-muted-foreground">{item.desc}</p>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </section>
+        </div>
+      )}
+
+      {selectedComparison !== null && (
+        <div
+          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 animate-fade-in"
+          onClick={() => setSelectedComparison(null)}
+        >
+          <button
+            className="absolute top-4 right-4 text-white hover:text-primary transition-colors z-10"
+            onClick={() => setSelectedComparison(null)}
+          >
+            <Icon name="X" size={40} />
+          </button>
+          <div className="max-w-7xl w-full" onClick={(e) => e.stopPropagation()}>
+            <h3 className="text-white text-3xl font-bold text-center mb-8">
+              {reconstructionProjects[selectedComparison].title}
+            </h3>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-3">
+                <div className="flex items-center gap-2 text-white/70 font-semibold justify-center">
+                  <Icon name="Clock" size={24} />
+                  <span className="text-lg">До реконструкции</span>
+                </div>
+                <img
+                  src={reconstructionProjects[selectedComparison].before}
+                  alt="До"
+                  className="w-full rounded-lg"
+                />
+              </div>
+              <div className="space-y-3">
+                <div className="flex items-center gap-2 text-primary font-semibold justify-center">
+                  <Icon name="Sparkles" size={24} />
+                  <span className="text-lg">После реконструкции</span>
+                </div>
+                <img
+                  src={reconstructionProjects[selectedComparison].after}
+                  alt="После"
+                  className="w-full rounded-lg"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       )}
 
