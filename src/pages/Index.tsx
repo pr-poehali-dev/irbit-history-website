@@ -9,44 +9,14 @@ const Index = () => {
 
   const galleryImages = [
     {
-      url: 'https://cdn.poehali.dev/projects/53302110-19c1-42a7-af1d-801fb88b54db/files/dc6c95ea-00d3-4381-b70e-5e11b355a79f.jpg',
-      title: 'Исторический центр',
-      description: 'Старинные улицы Ирбита'
+      url: 'https://cdn.poehali.dev/files/6d6aff45-de8a-422b-9880-daebf5865a09.jpeg',
+      title: 'Площадь Ирбита',
+      description: 'Современная центральная площадь на закате'
     },
     {
-      url: 'https://cdn.poehali.dev/projects/53302110-19c1-42a7-af1d-801fb88b54db/files/317094ed-b48b-4856-acdf-491cb55af672.jpg',
-      title: 'Городские улицы',
-      description: 'Современный облик города'
-    },
-    {
-      url: 'https://cdn.poehali.dev/projects/53302110-19c1-42a7-af1d-801fb88b54db/files/6a6c7089-b69a-4193-8d47-e35a3264ed04.jpg',
-      title: 'Храмы Ирбита',
-      description: 'Православная архитектура'
-    },
-    {
-      url: 'https://cdn.poehali.dev/projects/53302110-19c1-42a7-af1d-801fb88b54db/files/453f6235-4e97-4119-8de7-be81a1052685.jpg',
-      title: 'Архитектурное наследие',
-      description: 'Памятники истории'
-    },
-    {
-      url: 'https://cdn.poehali.dev/projects/53302110-19c1-42a7-af1d-801fb88b54db/files/2fc7f6af-ae9d-49f1-8966-765fe1bf338c.jpg',
-      title: 'Городская площадь',
-      description: 'Центр городской жизни'
-    },
-    {
-      url: 'https://cdn.poehali.dev/projects/53302110-19c1-42a7-af1d-801fb88b54db/files/f6bdfa2a-6af1-44fc-8019-989e8e340727.jpg',
-      title: 'Река Ница',
-      description: 'Природа города'
-    },
-    {
-      url: 'https://cdn.poehali.dev/projects/53302110-19c1-42a7-af1d-801fb88b54db/files/d1853ac4-ed47-41bc-a3f0-726dd8b6fad5.jpg',
-      title: 'Мотоциклетный завод',
-      description: 'Промышленное наследие'
-    },
-    {
-      url: 'https://cdn.poehali.dev/projects/53302110-19c1-42a7-af1d-801fb88b54db/files/3cd9badc-1950-4f5a-bd30-fd9b596a888a.jpg',
-      title: 'Современный Ирбит',
-      description: 'Развитие города'
+      url: 'https://cdn.poehali.dev/files/faa862de-6368-49e6-a8a8-e1fd6913f6c2.jpeg',
+      title: 'Ирбитская ярмарка',
+      description: 'Историческая фотография знаменитой ярмарки'
     }
   ];
 
