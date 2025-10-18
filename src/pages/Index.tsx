@@ -117,11 +117,11 @@ const Index = () => {
               <p className="text-center text-muted-foreground mb-12 text-lg">
                 Красота Ирбита в фотографиях
               </p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 {galleryImages.map((image, index) => (
                   <div
                     key={index}
-                    className="relative group cursor-pointer overflow-hidden rounded-lg aspect-square animate-fade-in"
+                    className="relative group cursor-pointer overflow-hidden rounded-lg aspect-video animate-fade-in"
                     style={{ animationDelay: `${index * 0.05}s` }}
                     onClick={() => setSelectedImage(image.url)}
                   >
@@ -131,13 +131,13 @@ const Index = () => {
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                        <h4 className="font-semibold text-sm">{image.title}</h4>
-                        <p className="text-xs text-white/80">{image.description}</p>
+                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h4 className="font-semibold text-xl">{image.title}</h4>
+                        <p className="text-base text-white/80">{image.description}</p>
                       </div>
                     </div>
-                    <div className="absolute top-2 right-2 bg-white/90 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Icon name="Expand" size={16} className="text-secondary" />
+                    <div className="absolute top-4 right-4 bg-white/90 rounded-full p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Icon name="Expand" size={24} className="text-secondary" />
                     </div>
                   </div>
                 ))}
